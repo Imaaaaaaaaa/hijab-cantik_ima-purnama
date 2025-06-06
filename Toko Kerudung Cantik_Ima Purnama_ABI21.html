@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hijab Cantik - Toko Hijab Online Terpercaya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fef7f5;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(255, 154, 158, 0.3);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.3);
+            color: #e74c3c;
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            background: rgba(255,255,255,0.4);
+            padding: 0.8rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        .cart-icon:hover {
+            background: rgba(255,255,255,0.6);
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #2c3e50;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #c0392b, #a93226);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #2c3e50;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            border-radius: 2px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: #ff9a9e;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #fff5f5, #ffe0e6);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,154,158,0.1), rgba(254,207,239,0.1));
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: #2c3e50;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-add-cart:hover {
+            background: linear-gradient(45deg, #fad0c4, #ff9a9e);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 154, 158, 0.3);
+        }
+
+        /* Categories */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-color: #ff9a9e;
+        }
+
+        .category-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .category-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #ecf0f1;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            margin-top: 2rem;
+            color: #95a5a6;
+        }
+
+        /* Responsive Design */
+        
+        /* Tablet (768px) */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 154, 158, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+                border-radius: 0 0 15px 15px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+                border-radius: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .about {
+                padding: 2.5rem 2rem;
+            }
+        }
+
+        /* Mobile (320px) */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            main {
+                padding: 0.8rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .product-card {
+                padding: 1.5rem;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .category-card {
+                padding: 2rem 1rem;
+            }
+
+            .about {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-content {
+                padding: 0 1rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Desktop (1200px+) */
+        @media (min-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Special effects */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">🧕 Hijab Cantik</a>
+            <nav>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                <ul id="nav-menu">
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#produk">Produk</a></li>
+                    <li><a href="#kategori">Kategori</a></li>
+                    <li><a href="#tentang">Tentang Kami</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+            <a href="#keranjang" class="cart-icon">
+                🛍️
+                <span class="cart-count">2</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="beranda" class="hero">
+            <h1>Koleksi Hijab Cantik</h1>
+            <p>Temukan hijab berkualitas premium dengan desain elegan dan harga terjangkau mulai dari Rp 50.000</p>
+            <a href="#produk" class="btn-primary">Lihat Koleksi</a>
+        </section>
+
+        <section id="produk">
+            <h2 class="section-title">Produk Terbaru</h2>
+            <div class="product-grid">
+                <article class="product-card fade-in">
+                    <div class="product-image">🧕</div>
+                    <h3 class="product-title">Hijab Segi Empat Premium</h3>
+                    <p class="product-description">Hijab segi empat dari bahan voal premium yang lembut dan adem. Cocok untuk daily wear dengan berbagai warna pilihan yang elegan.</p>
+                    <div class="product-price">
+                        Rp 75.000
+                        <span class="price-original">Rp 95.000</span>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart('Hijab Segi Empat Premium', 75000)">Tambah ke Keranjang</button>
+                </article>
+
+                <article class="product-card fade-in">
+                    <div class="product-image">👑</div>
+                    <h3 class="product-title">Hijab Pasmina Silk</h3>
+                    <p class="product-description">Pasmina silk berkualitas tinggi dengan tekstur halus dan berkilau. Memberikan kesan mewah dan elegan untuk acara formal.</p>
+                    <div class="product-price">
+                        Rp 125.000
+                        <span class="price-original">Rp 150.000</span>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart('Hijab Pasmina Silk', 125000)">Tambah ke Keranjang</button>
+                </article>
+
+                <article class="product-card fade-in">
+                    <div class="product-image">🌸</div>
+                    <h3 class="product-title">Hijab Motif Floral</h3>
+                    <p class="product-description">Hijab dengan motif bunga cantik dari bahan cotton yang nyaman dipakai. Perfect untuk tampilan feminin dan fresh sehari-hari.</p>
+                    <div class="product-price">
+                        Rp 65.000
+                        <span class="price-original">Rp 85.000</span>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart('Hijab Motif Floral', 65000)">Tambah ke Keranjang</button>
+                </article>
+
+                <article class="product-card fade-in">
+                    <div class="product-image">✨</div>
+                    <h3 class="product-title">Hijab Instant Bergo</h3>
+                    <p class="product-description">Hijab instant bergo praktis dengan pet antem. Mudah dipakai tanpa ribet dengan bahan jersey yang stretch dan nyaman.</p>
+                    <div class="product-price">
+                        Rp 55.000
+                        <span class="price-original">Rp 70.000</span>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart('Hijab Instant Bergo', 55000)">Tambah ke Keranjang</button>
+                </article>
+
+                <article class="product-card fade-in">
+                    <div class="product-image">💎</div>
+                    <h3 class="product-title">Hijab Crinkle Premium</h3>
+                    <p class="product-description">Hijab crinkle dengan tekstur kerut alami yang tidak perlu disetrika. Terbuat dari bahan premium dengan jatuhan yang indah.</p>
+                    <div class="product-price">
+                        Rp 89.000
+                        <span class="price-original">Rp 110.000</span>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart('Hijab Crinkle Premium', 89000)">Tambah ke Keranjang</button>
+                </article>
+            </div>
+        </section>
+
+        <section id="kategori">
+            <h2 class="section-title">Kategori Hijab</h2>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterCategory('segiempat')">
+                    <div class="category-icon">🟨</div>
+                    <div class="category-name">Segi Empat</div>
+                    <div class="category-count">15+ Produk</div>
+                </div>
+                <div class="category-card" onclick="filterCategory('pasmina')">
+                    <div class="category-icon">🧣</div>
+                    <div class="category-name">Pasmina</div>
+                    <div class="category-count">12+ Produk</div>
+                </div>
+                <div class="category-card" onclick="filterCategory('instant')">
+                    <div class="category-icon">⚡</div>
+                    <div class="category-name">Hijab Instant</div>
+                    <div class="category-count">8+ Produk</div>
+                </div>
+                <div class="category-card" onclick="filterCategory('premium')">
+                    <div class="category-icon">👑</div>
+                    <div class="category-name">Premium</div>
+                    <div class="category-count">10+ Produk</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tentang" class="about">
+            <h2 class="section-title">Tentang Kami</h2>
+            <p>
+                Hijab Cantik adalah toko hijab online terpercaya yang telah melayani ribuan muslimah di seluruh Indonesia. 
+                Kami menyediakan koleksi hijab berkualitas premium dengan harga terjangkau mulai dari Rp 50.000 hingga Rp 150.000. 
+                Setiap produk dipilih dengan teliti untuk memastikan kenyamanan, kualitas bahan, dan desain yang sesuai dengan 
+                trend fashion hijab terkini. Kami berkomitmen untuk membantu setiap muslimah tampil cantik, percaya diri, 
+                dan tetap syar'i dalam berbagai kesempatan.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🧕 Hijab Cantik</h3>
+                <p>Toko hijab online terpercaya dengan koleksi premium dan harga terjangkau untuk muslimah Indonesia.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Layanan Pelanggan</h3>
+                <p><a href="#">Bantuan & FAQ</a></p>
+                <p><a href="#">Panduan Ukuran</a></p>
+                <p><a href="#">Cara Perawatan</a></p>
+                <p><a href="#">Retur & Tukar</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Informasi</h3>
+                <p><a href="#">Tentang Kami</a></p>
+                <p><a href="#">Testimoni</a></p>
+                <p><a href="#">Blog Fashion</a></p>
+                <p><a href="#">Kebijakan Privasi</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Hubungi Kami</h3>
+                <p>📧 info@hijabcantik.com</p>
+                <p>📱 +62 812 3456 7890</p>
+                <p>📍 Jakarta, Indonesia</p>
+                <p>🕒 Senin - Sabtu: 09:00 - 17:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hijab Cantik. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Add to Cart Function with Price
+        function addToCart(productName, price) {
+            const formattedPrice = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(price);
+            
+            alert(`${productName} (${formattedPrice}) telah ditambahkan ke keranjang!`);
+            
+            // Update cart count
+            const cartCount = document.querySelector('.cart-count');
+            let currentCount = parseInt(cartCount.textContent);
+            cartCount.textContent = currentCount + 1;
+            
+            // Add animation effect
+            cartCount.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                cartCount.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        // Filter Category Function
+        function filterCategory(category) {
+            const categoryNames = {
+                'segiempat': 'Hijab Segi Empat',
+                'pasmina': 'Pasmina & Scarf',
+                'instant': 'Hijab Instant',
+                'premium': 'Koleksi Premium'
+            };
+            alert(`Menampilkan kategori: ${categoryNames[category] || category}`);
+        }
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu after clicking
+                    const navMenu = document.getElementById('nav-menu');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Price formatter function
+        function formatPrice(price) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(price);
+        }
+    </script>
+</body>
+</html>
